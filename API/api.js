@@ -8,15 +8,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var router = express.Router();
+// all of our routes will be prefixed with /api
+app.use('/api', router);
 
 router.post('/Decision', function(req, res) {
     const stockValues = req.body.StockValues;
     let decision = findBestDecision(stockValues);    
     res.json(decision);   
 });
-
-// all of our routes will be prefixed with /api
-app.use('/api', router);
 
 var port = process.env.PORT || 8080;
 app.listen(port);
