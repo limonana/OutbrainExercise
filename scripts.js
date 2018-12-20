@@ -1,32 +1,20 @@
 "use strict";
+
 function addStock() {
+    var temp = document.getElementsByTagName("template")[0];
+    var clon = temp.content.cloneNode(true);
+    
     const ul = document.getElementById("stock_list");
-    var li = document.createElement("li");
-
-    const dayLbl = document.createElement("label");
-    dayLbl.setAttribute("class", "DayLabel");
-    li.appendChild(dayLbl);
-
-    const input = document.createElement("input");
-    li.appendChild(input);
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete";
-    deleteBtn.setAttribute("type", "button");
-    deleteBtn.onclick = deleteStock;
-    deleteBtn.setAttribute("class", "DeleteButton");
-    li.appendChild(deleteBtn);
-
-    ul.appendChild(li);
+    ul.appendChild(clon);
 
     fillDayData();
 }
 
-function deleteStock(e) {
-    const deleteBtn = e.target;
+function deleteStock(deleteBtn) {
     let day = deleteBtn.getAttribute("day");
     const ul = document.getElementById("stock_list");
     ul.removeChild(ul.children[day - 1]);
+    
     fillDayData();
 }
 
