@@ -1,0 +1,13 @@
+.Decision {
+    display:none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+li{
+    margin: 1em 0;
+}
