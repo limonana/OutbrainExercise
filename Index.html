@@ -16,24 +16,16 @@
 <body>
     <h1>My Stock</h1>
     <form>
-        <ul>
-            <li>
-                <div>
-                    <label>Day 1:</label>
-                    <input value="10.1">
-                    <button>Delete</button>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <label>Day 2:</label>
-                    <input value="10.1">
-                    <button>Delete</button>
-                </div>
+        <ul id="stock_list">
+            <li>               
+                <label>Day 1:</label>
+                <input value="10.1">
+                <button>Delete</button>               
             </li>
         </ul>
         <div>
-            <button>Add</button>
+            <!-- is this the best pratice?-->
+            <button type="button" onclick="addStock()">Add</button>
         </div>        
         <button type="submit">What should I do ?</button>
     </form>
