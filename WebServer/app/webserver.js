@@ -9,4 +9,6 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(8080);
+let port= 8080;
+app.listen(port);
+console.log('Webserver Listen on port ' + port);
