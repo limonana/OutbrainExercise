@@ -7,24 +7,30 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;        // set our port
-var router = express.Router();              // get an instance of the express Router
+var router = express.Router();
 
 router.post('/Decision', function(req, res) {
-    res.json({
-        "BuyDay": 1,
-        "SellDay" : 2,
-        "Revenue": 10
-    });   
+    const stockValues = req.body.StockValues;
+    let decision = findBestDecision(stockValues);    
+    res.json(decision);   
 });
 
-// more routes for our API will happen here
-
-// REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
 
-// START THE SERVER
-// =============================================================================
+var port = process.env.PORT || 8080;
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Stock API Listen on port ' + port);
+
+function findBestDecision(stockValues){
+    let maxDecision = {buyingDay : 0, sellingDay: 0, revenue:0 }
+    for ( buyingDay =1 ; buyingDay<=stockValues.length; ++buyingDay){
+        for ( sellingDay = buyingDay+1; sellingDay <= stockValues.length; ++sellingDay){
+            let revenue = stockValues[sellingDay-1] - stockValues[buyingDay-1];
+            if (revenue > maxDecision.revenue){
+                maxDecision = {buyingDay: buyingDay, sellingDay: sellingDay, revenue: revenue};
+            }
+        }
+    }
+    return maxDecision;
+}
