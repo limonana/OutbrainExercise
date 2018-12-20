@@ -4,7 +4,8 @@
   "description": "",
   "main": "app\\webserver.js",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "~4.0.0",
+    "body-parser": "~1.0.1"
   },
   "devDependencies": {},
   "scripts": {
