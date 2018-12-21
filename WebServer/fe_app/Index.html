@@ -19,7 +19,7 @@
         <template>
             <li>
                 <label class="DayLabel"></label>
-                <input type="number">
+                <input type="number" min="0" required="required">
                 <button type="button" class="DeleteButton" onclick="deleteStock(this)">
                     Delete
                 </button>
@@ -31,7 +31,7 @@
             <!-- is this the best pratice?-->
             <button type="button" onclick="addStock()">Add</button>
         </div>
-        <button type="button" onclick="getDecision()">What should I do ?</button>
+        <button type="submit">What should I do ?</button>
     </form>
     <br>
     <div id="decisionArea">

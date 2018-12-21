@@ -1,8 +1,18 @@
 "use strict";
 function pageLoad(){
+    defineFormSubmit();
+    
     hide(getDecisionArea());
-    addStock();
+    addStock();   
 }
+function defineFormSubmit() {
+    var form = document.getElementsByTagName("form")[0];
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        getDecision();
+    });
+}
+
 function getListElement(){
     return document.getElementById("stock_list");
 }
