@@ -9,14 +9,8 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname,"fe_app","index.html"));
 });
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-app.post('/Decision', function(req, res) {
-    const stockValues = req.body.StockValues;
+app.get('/Decision', function(req, res) {
+    const stockValues = JSON.parse(req.query.StockValues);
     let decision = findBestDecision(stockValues);    
     res.json(decision);   
 });
