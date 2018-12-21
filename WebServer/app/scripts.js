@@ -32,3 +32,28 @@ function fillDayData() {
         deleteBtn.setAttribute("day", day);
     }
 }
+
+function getDecision(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          const decision= JSON.parse(this.responseText);
+          displayDecision(decision);        
+      }
+    };
+    xhttp.open("POST", "api/Decision", true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify({StockValues: getStockValues()}));
+}
+
+function displayDecision(decision){
+    document.getElementById("sellingDay").innerText = decision.sellingDay;
+    document.getElementById("buyingDay").innerText = decision.buyingDay;
+    document.getElementById("revenue").innerText = decision.revenue;    
+}
+
+function getStockValues(){
+    const ul = getListElement();
+    const inputs = Array.from(ul.getElementsByTagName("input"));
+    return inputs.map(element => element.valueAsNumber);
+}

@@ -31,18 +31,18 @@
             <!-- is this the best pratice?-->
             <button type="button" onclick="addStock()">Add</button>
         </div>
-        <button type="submit">What should I do ?</button>
+        <button type="button" onclick="getDecision()">What should I do ?</button>
     </form>
     <br>
-    <div class="Decision">
+    <div>
         <div>
-            <span>You should buy at day </span><span>1</span>
+            <span>You should buy at day </span><span id="buyingDay">1</span>
         </div>
         <div>
-            <span>You should sell at day </span><span>2</span>
+            <span>You should sell at day </span><span id ="sellingDay">2</span>
         </div>
         <div>
-            <span>Your revenue will be </span><span>1</span>
+            <span>Your revenue will be </span><span id = "revenue">1</span>
         </div>
     </div>
 </body>
