@@ -2,7 +2,7 @@
   "name": "outbrainexercise",
   "version": "1.0.0",
   "description": "",
-  "main": "app\\webserver.js",
+  "main": "webServer.js",
   "dependencies": {
     "express": "~4.0.0",
     "body-parser": "~1.0.1"

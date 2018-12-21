@@ -24,7 +24,7 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-let port= 8080;
+let port= 8080; //can't use 80 because of previliges issue
 app.listen(port);
 console.log('Webserver Listen on port ' + port);
 
