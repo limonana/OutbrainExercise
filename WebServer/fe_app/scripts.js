@@ -45,7 +45,7 @@ function getDecision(){
           displayDecision(decision);        
       }
     };
-    xhttp.open("POST", "api/Decision", true);
+    xhttp.open("POST", "Decision", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify({StockValues: getStockValues()}));
 }
