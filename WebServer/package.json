@@ -4,10 +4,17 @@
   "description": "",
   "main": "app\\webserver.js",
   "dependencies": {
-    "express": "~4.0.0",
-    "body-parser": "~1.0.1"
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
