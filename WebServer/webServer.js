@@ -1,3 +1,5 @@
+const { findBestDecision } = require("./findBestDecision");
+
 const express = require('express');
 const app = express();
 
@@ -9,7 +11,7 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname,"fe_app","index.html"));
 });
 
-app.get('/Decision', function(req, res) {
+app.get('/Decision', function(req, res) {   
     const stockValues = JSON.parse(req.query.StockValues);
     let decision = findBestDecision(stockValues);    
     res.json(decision);   
@@ -19,16 +21,3 @@ app.get('/Decision', function(req, res) {
 const port = 8080; //can't use 80 because of previliges issue
 app.listen(port);
 console.log('Webserver Listen on port ' + port);
-
-function findBestDecision(stockValues){
-    let maxRevenueDecision = {operation: 'Do Nothing', revenue:0 }
-    for ( let buyingDay =1 ; buyingDay <= stockValues.length; ++buyingDay){
-        for ( let sellingDay = buyingDay+1; sellingDay <= stockValues.length; ++sellingDay){
-            let revenue = stockValues[sellingDay-1] - stockValues[buyingDay-1];
-            if (revenue > maxRevenueDecision.revenue){
-                maxRevenueDecision = {operation:'Buy And Sell',buyingDay: buyingDay, sellingDay: sellingDay, revenue: revenue};
-            }
-        }
-    }
-    return maxRevenueDecision;
-}
