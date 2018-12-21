@@ -1,4 +1,8 @@
 "use strict";
+function pageLoad(){
+    hide(getDecisionArea());
+    addStock();
+}
 function getListElement(){
     return document.getElementById("stock_list");
 }
@@ -46,10 +50,35 @@ function getDecision(){
     xhttp.send(JSON.stringify({StockValues: getStockValues()}));
 }
 
-function displayDecision(decision){
-    document.getElementById("sellingDay").innerText = decision.sellingDay;
-    document.getElementById("buyingDay").innerText = decision.buyingDay;
-    document.getElementById("revenue").innerText = decision.revenue;    
+function displayDecision(decision){    
+    show(getDecisionArea());
+    document.getElementById("operation").innerText = decision.operation;
+    if (decision.operation==='Buy And Sell'){
+        show(document.getElementById("buyAndSellArea"));
+        document.getElementById("sellingDay").innerText = decision.sellingDay;
+        document.getElementById("buyingDay").innerText = decision.buyingDay;
+        document.getElementById("revenue").innerText = decision.revenue;
+    }    
+    else{
+        hide(document.getElementById("buyAndSellArea"));
+    }
+}
+
+function getDecisionArea() {
+    return document.getElementById("decisionArea");
+}
+
+function showDecisionArea() {
+    const decisionAreaElem = 
+    show(decisionAreaElem);
+}
+
+function show(elem) {
+    elem.style.display = "block";
+}
+
+function hide(elem) {
+    elem.style.display = "none";
 }
 
 function getStockValues(){

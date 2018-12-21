@@ -13,19 +13,19 @@
     <script src="scripts.js"></script>
 </head>
 
-<body onload="addStock()">
+<body onload="pageLoad()">
     <h1>My Stock</h1>
     <form>
-            <template>
-                    <li>
-                        <label class="DayLabel"></label>
-                        <input type="number">
-                        <button type="button" class="DeleteButton" onclick="deleteStock(this)">
-                            Delete
-                        </button>
-                    </li>
-                </template>
-        <ul id="stock_list">            
+        <template>
+            <li>
+                <label class="DayLabel"></label>
+                <input type="number">
+                <button type="button" class="DeleteButton" onclick="deleteStock(this)">
+                    Delete
+                </button>
+            </li>
+        </template>
+        <ul id="stock_list">
         </ul>
         <div>
             <!-- is this the best pratice?-->
@@ -34,15 +34,12 @@
         <button type="button" onclick="getDecision()">What should I do ?</button>
     </form>
     <br>
-    <div>
-        <div>
-            <span>You should buy at day </span><span id="buyingDay">1</span>
-        </div>
-        <div>
-            <span>You should sell at day </span><span id ="sellingDay">2</span>
-        </div>
-        <div>
-            <span>Your revenue will be </span><span id = "revenue">1</span>
+    <div id="decisionArea">
+        <div><span>You should </span><span id="operation"></span></div>
+        <div id="buyAndSellArea">
+            <div><span>You should buy at day </span><span id="buyingDay"></span></div>
+            <div><span>You should sell at day </span><span id="sellingDay"></span></div>
+            <div><span>Your revenue will be </span><span id="revenue"></span></div>
         </div>
     </div>
 </body>
