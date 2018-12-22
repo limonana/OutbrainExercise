@@ -48,16 +48,10 @@ function fillDayData() {
 }
 
 function getDecision(){
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            const decision= JSON.parse(this.responseText);
-            displayDecision(decision);        
-        }
-      };
     let decisionURL = "Decision?StockValues="+JSON.stringify(getStockValues());
-    xhttp.open("GET", decisionURL, true);
-    xhttp.send();
+    fetch(decisionURL)
+    .then((resp) => resp.json()).then((data)=>displayDecision(data))
+    .catch(() => alert("Opps. Something went wrong"));
 }
 
 function displayDecision(decision){    
