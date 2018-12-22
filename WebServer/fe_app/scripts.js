@@ -1,5 +1,6 @@
 "use strict";
 function pageLoad(){
+    window.addEventListener('error', (event) => alert("some error occured") );
     defineFormSubmit();
     
     hide(getDecisionArea());
